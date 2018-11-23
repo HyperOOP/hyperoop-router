@@ -1,0 +1,51 @@
+{
+  "name": "hyperoop-router",
+  "version": "0.1.0",
+  "description": "Router for hyperoop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/algebraic-brain/hyperoop-router"
+  },
+  "license": "MIT",
+  "keywords": [
+    "router",
+    "hyperoop",
+    "frontend",
+    "web",
+    "SPA",
+    "single page application",
+    "framework",
+    "virtual dom"
+  ],
+  "main": "dist/router.umd.js",
+  "module": "dist/router.es.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "build:es": "rollup -c -i src/index.ts -o dist/router.es.js -m -f es -n router",
+    "build:umd": "rollup -c -i src/index.ts -o dist/router.umd.js -m -f umd -n router",
+    "build:min": "rollup -c rollup.config.minify.js -i src/index.ts -o dist/hyperoop-router.min.js -m -f umd -n router",
+    "build": "npm run build:es && npm run build:umd && npm run build:min",
+    "test": "tsc -p tsconfig.test.json && jest --coverage --env=jsdom"
+  },
+  "author": "Osman Bineev",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "rollup": "^0.67.0",
+    "rollup-plugin-gzip": "^2.0.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-typescript2": "^0.17.2",
+    "tslint": "^5.11.0",
+    "typedoc": "^0.13.0",
+    "typedoc-plugin-markdown": "^1.1.18",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "hyperoop": "^0.1.22"
+  }
+}
