@@ -1,5 +1,5 @@
 const ui = require("hyperoop");
-const { Router, Route, Link, Redirect } = require("./dist/index");
+const { Router, Route, Link, Redirect } = require("./dist");
 
 const wait = async ms => new Promise(resolve => setTimeout(resolve, ms))
 const click = e => e.dispatchEvent(new MouseEvent("click", { button: 0 }))
@@ -13,7 +13,6 @@ class App extends ui.Actions {
 
 let app = null;
 let pathname = "";
-
 
 const beforeEach = () => {
     document.body.innerHTML = "";
@@ -59,8 +58,10 @@ test("Transition by clicking Link", async done => {
     await wait(0);
     expect(spy).not.toBeCalled();
 
-    click(document.body.getElementsByTagName("a")[0]);
+    const el = document.body.getElementsByTagName("a")[0];
+    click(el);
     await wait(0);
+    console.log(">>>>", window.location.pathname);
     expect(spy).toBeCalled();
 
     // Clicking the same link again doesn't cause transition.

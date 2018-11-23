@@ -19,6 +19,7 @@ export interface ILinkAttributes {
 
 export let Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
     h("a", {
+        ...a,
         href: a.to,
         onclick(e: MouseEvent) {
             const loc = window.location;
@@ -34,4 +35,5 @@ export let Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
                 history.pushState(null, "", a.to);
             }
         },
+        to: undefined,
     }, children);
