@@ -1,4 +1,5 @@
 Copyright © 2017-present [Jorge Bucaran](https://github.com/jorgebucaran)
+
 Copyright © 2018-present [Osman Bineev](https://github.com/algebraic-brain)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
