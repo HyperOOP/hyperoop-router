@@ -61,7 +61,6 @@ test("Transition by clicking Link", async done => {
     const el = document.body.getElementsByTagName("a")[0];
     click(el);
     await wait(0);
-    console.log(">>>>", window.location.pathname);
     expect(spy).toBeCalled();
 
     // Clicking the same link again doesn't cause transition.
