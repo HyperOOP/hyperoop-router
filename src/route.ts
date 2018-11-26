@@ -1,4 +1,4 @@
-import { Component, VNode } from "hyperoop";
+import { Component, LazyVNode } from "hyperoop";
 import { IMatch, parseRoute } from "./parseRoute";
 
 export interface ITargetAttributes {
@@ -6,7 +6,7 @@ export interface ITargetAttributes {
 }
 
 export type TargetComponent = Component<ITargetAttributes>;
-export type TargetNode = VNode<ITargetAttributes>;
+export type TargetNode = LazyVNode<ITargetAttributes>;
 
 export interface IRouteAttributes {
     path:      string;
@@ -14,8 +14,11 @@ export interface IRouteAttributes {
     component: TargetComponent;
 }
 
-export let Route = (a: IRouteAttributes): TargetNode => {
-    const  loc = window.location;
-    const  match = parseRoute(a.path, loc.pathname, a.exact);
-    return match && (a.component({match}, []) as TargetNode);
+export let Route = (a: IRouteAttributes): TargetNode => () => {
+    const loc = window.location;
+    const match = parseRoute(a.path, loc.pathname, a.exact);
+    if (!match) { return null; }
+    const c = a.component({match}, []);
+    if (typeof c === "function") { return c(); }
+    return c;
 };

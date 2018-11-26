@@ -1,8 +1,9 @@
-import { VNode } from "hyperoop";
+import { LazyVNode } from "hyperoop";
 
-export const Switch = (a: {}, children: VNode[]): VNode => {
+export const Switch = (a: {}, children: LazyVNode[]): LazyVNode => () => {
     for (const c of children) {
-        if (c) { return c; }
+        const result = c && c();
+        if (result) { return result; }
     }
     return null;
 };

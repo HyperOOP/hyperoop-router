@@ -30,9 +30,8 @@ test("Transition by location.go()", async done => {
     beforeEach();
 
     const spy = jest.fn();
-    const view = ui.view(app, 
-        () => ui.h(Route, { path: "/test", component: spy }));
-    ui.init(document.body, view);
+    const view = () => ui.h(Route, { path: "/test", component: spy });
+    ui.init(document.body, view, app);
     await wait(0);
     expect(spy).not.toBeCalled();
 
@@ -48,13 +47,12 @@ test("Transition by clicking Link", async done => {
     beforeEach();
 
     const spy = jest.fn()
-    const view = ui.view(app, () =>
+    const view = () =>
         ui.h("div", {},
             ui.h(Link, {to: "/test"}),
             ui.h(Route, { path: "/test", component: spy }),
-        )
-    );
-    ui.init(document.body, view);
+        );
+    ui.init(document.body, view, app);
     await wait(0);
     expect(spy).not.toBeCalled();
 
@@ -75,9 +73,9 @@ test("Transition by clicking Link", async done => {
 
 test("Click external Link", async done => {
     beforeEach();
-    const view = ui.view(app, () => ui.h(Link, { to: "http://example.com/" }));
+    const view = () => ui.h(Link, { to: "http://example.com/" });
 
-    ui.init(document.body, view);
+    ui.init(document.body, view, app);
     await wait(0)
     expect(window.location.pathname).toEqual("/")
 
@@ -93,14 +91,13 @@ test("Transition by clicking Link including non alphanumeric characters", async 
     beforeEach();
 
     const spy = jest.fn()
-    const view = ui.view(app, () =>
+    const view = () =>
         ui.h("div", {},
             ui.h(Link, { to: "/test/café" }),
             ui.h(Route, { path: "/test/:id", component: spy }),
-        )
-    );
+        );
 
-    ui.init(document.body, view);
+    ui.init(document.body, view, app);
     await wait(0);
     expect(spy).not.toBeCalled();
 
@@ -119,16 +116,17 @@ test("Transition by rendering Redirect", async done => {
     beforeEach();
 
     const spy = jest.fn();
-    const view = ui.view(app, () =>
-        ui.h("div",
-            ui.h(Route, { 
+    const view = () =>
+        ui.h("div", {},
+            ui.h(Route, {
+                id: 1,
                 path: "/test",
-                component: () => ui.h(Redirect, {to: "/somewhere" })
+                component: () => ui.h(Redirect, { to: "/somewhere" })
             }),
-            ui.h(Route, { path: "/somewhere", component: spy })
-        )
-    );
-    ui.init(document.body, view);
+            ui.h(Route, { id: 2, path: "/somewhere", component: spy })
+        );
+
+    ui.init(document.body, view, app);
     await wait(0);
     expect(spy).not.toBeCalled();
 
