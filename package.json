@@ -46,6 +46,6 @@
     "typescript": "^3.0.1"
   },
   "dependencies": {
-    "hyperoop": "^0.1.22"
+    "hyperoop": "^0.2.0"
   }
 }
