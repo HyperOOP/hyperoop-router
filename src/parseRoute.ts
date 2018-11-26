@@ -7,7 +7,7 @@ export interface IMatch {
     };
 }
 
-const trimTrailingSlash = (x: string): string => x.replace(/(.*)\/$/, "$1");
+export const trimTrailingSlash = (x: string): string => x.replace(/(.*)\/$/, "$1");
 
 const decodeParam = (val: string): string => {
     try {

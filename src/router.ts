@@ -1,7 +1,8 @@
 import { Component, IRenderer, VNode } from "hyperoop";
 
 export interface IRendererOwner {
-    readonly Renderer: IRenderer;
+    readonly Callback?: <D = {}>(data: D) => void;
+    readonly Renderer?: IRenderer;
 }
 
 export type Child = VNode | string | number | null;
@@ -55,7 +56,11 @@ export class Router {
 
         const handleLocationChange = (e) => {
             if (self.pathname !== window.location.pathname) {
-                self.rOwner.Renderer.render();
+                if (self.rOwner.Callback) {
+                    self.rOwner.Callback(e.state);
+                } else {
+                    self.rOwner.Renderer.render();
+                }
                 self.pathname = window.location.pathname;
             }
         };
