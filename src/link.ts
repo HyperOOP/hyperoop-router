@@ -14,10 +14,10 @@ const origin = (loc: ILocated) =>
 const isExternal = (el: ILocated): boolean => el && origin(window.location) !== origin(el);
 
 export interface IToObject {
-    pathname: string;
-    search:   string;
-    hash:     string;
-    state:    any;
+    pathname?: string;
+    search?:   string;
+    hash?:     string;
+    state:     any;
 }
 
 export interface ILinkAttributes {
@@ -28,9 +28,8 @@ export interface ILinkAttributes {
 const parseLocation = (to: string | IToObject): [string, any] => {
     if (!to) { return ["#", null]; }
     if (typeof to === "string") { return [to, null]; }
-    const pathname = trimTrailingSlash(to.pathname);
     return ["" +
-        (pathname ? pathname : "") +
+        (to.pathname ? trimTrailingSlash(to.pathname) : "") +
         (to.search  ? (to.search[0] === "?" ? to.search : "?" + to.search) : "") +
         (to.hash ? (to.hash[0] === "#" ? to.hash : "#" + to.hash) : ""), to.state];
 };

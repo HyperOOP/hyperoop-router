@@ -1,7 +1,7 @@
 import { Component, IRenderer, VNode } from "hyperoop";
 
 export interface IRendererOwner {
-    readonly onPathChange?: <D = {}>(data: D) => void;
+    readonly onPathChange?: (data: any) => void;
     readonly Renderer?: IRenderer;
 }
 
@@ -18,10 +18,14 @@ export let jsxFactory: JSXFactory = null;
 export class Router {
     private rOwner:   IRendererOwner;
     private pathname: string;
+    private search:   string;
+    private hash:     string;
 
     constructor(rOwner: IRendererOwner, jsxf: JSXFactory) {
         this.rOwner = rOwner;
         this.pathname = window.location.pathname;
+        this.search = window.location.search;
+        this.hash = window.location.hash;
         if (!jsxFactory) {
             jsxFactory = jsxf;
         }
@@ -55,13 +59,18 @@ export class Router {
         const self = this;
 
         const handleLocationChange = (e) => {
-            if (self.pathname !== window.location.pathname) {
+            if (self.pathname !== window.location.pathname ||
+                self.hash !== window.location.hash ||
+                self.search !== window.location.search) {
+
                 if (self.rOwner.onPathChange) {
                     self.rOwner.onPathChange(e.detail);
                 } else {
                     self.rOwner.Renderer.render();
                 }
                 self.pathname = window.location.pathname;
+                self.search = window.location.search;
+                self.hash = window.location.hash;
             }
         };
 

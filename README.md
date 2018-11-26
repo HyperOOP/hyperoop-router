@@ -7,4 +7,20 @@ Router for [hyperoop](https://www.npmjs.com/package/hyperoop).
 
 ## Status
 
-Planning.
+Under development.
+
+## Examples
+
+See [examples](https://github.com/algebraic-brain/hyperoop-examples).
+
+### Run example
+
+To run `todo-routing` example:
+
+```bash
+git clone https://github.com/algebraic-brain/hyperoop-examples
+cd hyperoop-examples/todo-routing
+npm i && npm run serve
+```
+
+Then open localhost:10001 in browser.
