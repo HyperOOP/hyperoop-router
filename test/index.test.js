@@ -9,6 +9,11 @@ class App extends ui.Actions {
         super({});
         this.router = new Router(this, ui.h);
     }
+
+    onPathChange(data) {
+        this.pathData = data;
+        this.Renderer.render();
+    }
 }
 
 let app = null;
@@ -66,6 +71,28 @@ test("Transition by clicking Link", async done => {
     click(document.body.getElementsByTagName("a")[0]);
     await wait(0);
     expect(spy).toHaveBeenCalledTimes(count);
+
+    afterEach();
+    done();
+})
+
+test("Set state by clicking Link", async done => {
+    beforeEach();
+
+    const view = () =>
+        ui.h("div", {},
+            ui.h(Link, {to: {pathname: "/test", state: "OK"}}),
+        );
+    
+    ui.init(document.body, view, app);
+    await wait(0);
+
+    app.pathData = "";
+    const el = document.body.getElementsByTagName("a")[0];
+    click(el);
+    await wait(0);
+    expect(window.location.pathname).toEqual("/test")
+    expect(app.pathData).toBe("OK");
 
     afterEach();
     done();
