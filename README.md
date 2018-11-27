@@ -1,7 +1,16 @@
-# hyperoop-router
-[![Build Status](https://travis-ci.org/algebraic-brain/hyperoop-router.svg?branch=master)](https://travis-ci.org/algebraic-brain/hyperoop-router)
-[![codecov](https://codecov.io/gh/algebraic-brain/hyperoop-router/branch/master/graph/badge.svg)](https://codecov.io/gh/algebraic-brain/hyperoop-router)
-[![GitHub top language](https://img.shields.io/github/languages/top/algebraic-brain/hyperoop-router.svg)](https://github.com/algebraic-brain/hyperoop-router)
+<p align="center"><img width=50 src="https://github.com/algebraic-brain/hyperoop/blob/master/logo.png?raw=true"/></p>
+
+<p align="center">
+<a href="https://travis-ci.org/algebraic-brain/hyperoop-router"><img src="https://travis-ci.org/algebraic-brain/hyperoop-router.svg?branch=master" alt="Build Status"></a>
+<a href="https://codecov.io/gh/algebraic-brain/hyperoop-router"><img src="https://codecov.io/gh/algebraic-brain/hyperoop-router/branch/master/graph/badge.svg" alt="codecov"/></a>
+<a href="https://www.npmjs.com/package/hyperoop-router"><img src="https://img.shields.io/npm/v/hyperoop-router.svg" alt="npm"/></a>
+<a href="https://github.com/algebraic-brain/hyperoop-router"><img src="https://img.shields.io/github/languages/top/algebraic-brain/hyperoop-router.svg" alt="GitHub top language"/></a>
+<a href="https://www.npmjs.com/package/hyperoop-router"><img src="https://img.shields.io/npm/dt/hyperoop-router.svg" alt="npm"/></a>
+<a href="https://snyk.io/test/npm/hyperoop-router"><img src="https://snyk.io/test/npm/hyperoop-router/badge.svg" alt="Known Vulnerabilities"/></a>
+<a href="https://gitter.im/hyper-oop/hyperoop-router?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/hyper-oop/hyperoop-router.svg" alt="Join the chat at https://gitter.im/hyper-oop"/></a>
+</p>
+
+<h1 align="center">hyperoop-router</h1>
 
 Router for [hyperoop](https://www.npmjs.com/package/hyperoop).
 

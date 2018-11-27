@@ -10,7 +10,7 @@ class App extends ui.Actions {
         this.router = new Router(this, ui.h);
     }
 
-    onPathChange(data) {
+    onLocationChange(data) {
         this.pathData = data;
         this.Renderer.render();
     }

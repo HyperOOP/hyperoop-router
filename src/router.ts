@@ -1,7 +1,7 @@
 import { Component, IRenderer, VNode } from "hyperoop";
 
 export interface IRendererOwner {
-    readonly onPathChange?: (data: any) => void;
+    readonly onLocationChange?: (data: any) => void;
     readonly Renderer?: IRenderer;
 }
 
@@ -15,17 +15,15 @@ export type JSXFactory =
 
 export let jsxFactory: JSXFactory = null;
 
+const locString = (loc: Location): string => loc.pathname + loc.search + loc.hash;
+
 export class Router {
-    private rOwner:   IRendererOwner;
-    private pathname: string;
-    private search:   string;
-    private hash:     string;
+    private rOwner: IRendererOwner;
+    private loc:    string;
 
     constructor(rOwner: IRendererOwner, jsxf: JSXFactory) {
         this.rOwner = rOwner;
-        this.pathname = window.location.pathname;
-        this.search = window.location.search;
-        this.hash = window.location.hash;
+        this.loc = locString(window.location);
         if (!jsxFactory) {
             jsxFactory = jsxf;
         }
@@ -60,18 +58,14 @@ export class Router {
 
         const handleLocationChange = (e) => {
             const state = "state" in e ? e.state : e.detail;
-            if (self.pathname !== window.location.pathname ||
-                self.hash !== window.location.hash ||
-                self.search !== window.location.search) {
-
-                if (self.rOwner.onPathChange) {
-                    self.rOwner.onPathChange(state);
+            const loc = locString(window.location);
+            if (self.loc !== loc) {
+                if (self.rOwner.onLocationChange) {
+                    self.rOwner.onLocationChange(state);
                 } else {
                     self.rOwner.Renderer.render();
                 }
-                self.pathname = window.location.pathname;
-                self.search = window.location.search;
-                self.hash = window.location.hash;
+                self.loc = loc;
             }
         };
 
