@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://travis-ci.org/algebraic-brain/hyperoop-router"><img src="https://travis-ci.org/algebraic-brain/hyperoop-router.svg?branch=master" alt="Build Status"></a>
-<a href="https://codecov.io/gh/algebraic-brain/hyperoop-router"><img src="https://codecov.io/gh/algebraic-brain/hyperoop-router/branch/master/graph/badge.svg" alt="codecov"/></a>
+<a href='https://coveralls.io/github/algebraic-brain/hyperoop-router?branch=master'><img src='https://coveralls.io/repos/github/algebraic-brain/hyperoop-router/badge.svg?branch=master' alt='Coverage Status' /></a>
 <a href="https://www.npmjs.com/package/hyperoop-router"><img src="https://img.shields.io/npm/v/hyperoop-router.svg" alt="npm"/></a>
 <a href="https://github.com/algebraic-brain/hyperoop-router"><img src="https://img.shields.io/github/languages/top/algebraic-brain/hyperoop-router.svg" alt="GitHub top language"/></a>
 <a href="https://www.npmjs.com/package/hyperoop-router"><img src="https://img.shields.io/npm/dt/hyperoop-router.svg" alt="npm"/></a>
