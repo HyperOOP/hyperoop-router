@@ -1,6 +1,6 @@
 {
   "name": "hyperoop-router",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Router for hyperoop",
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "build:umd": "rollup -c -i src/index.ts -o dist/router.umd.js -m -f umd -n router",
     "build:min": "rollup -c rollup.config.minify.js -i src/index.ts -o dist/hyperoop-router.min.js -m -f umd -n router",
     "build": "npm run build:es && npm run build:umd && npm run build:min",
-    "test": "tsc -p tsconfig.test.json && jest --coverage --env=jsdom"
+    "test": "tsc -p tsconfig.test.json && jest --coverage --env=jsdom && npm run test:ts",
+    "test:ts": "tsc -p test/ts"
   },
   "author": "Osman Bineev",
   "devDependencies": {
