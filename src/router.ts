@@ -59,12 +59,13 @@ export class Router {
         const self = this;
 
         const handleLocationChange = (e) => {
+            const state = "state" in e ? e.state : e.detail;
             if (self.pathname !== window.location.pathname ||
                 self.hash !== window.location.hash ||
                 self.search !== window.location.search) {
 
                 if (self.rOwner.onPathChange) {
-                    self.rOwner.onPathChange(e.detail);
+                    self.rOwner.onPathChange(state);
                 } else {
                     self.rOwner.Renderer.render();
                 }
