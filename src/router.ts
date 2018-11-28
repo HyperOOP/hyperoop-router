@@ -1,17 +1,9 @@
-import { Component, IRenderer, VNode } from "hyperoop";
+import { IRenderer, JSXFactory } from "hyperoop";
 
 export interface IRendererOwner {
     readonly onLocationChange?: (data: any) => void;
     readonly Renderer?: IRenderer;
 }
-
-export type Child = VNode | string | number | null;
-
-type NameType<A> = Component<A> | string;
-type Children = Array<Child | Child[]>;
-
-export type JSXFactory =
-    <A>(nodeName: NameType<A>, attributes?: A, ...children: Children) => VNode<A>;
 
 export let jsxFactory: JSXFactory = null;
 

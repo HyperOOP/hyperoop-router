@@ -21,6 +21,14 @@ test("Route returns falsy if it doesn't match to current location", () => {
     expect(component).not.toBeCalled();
 });
 
+test("Route accepts lazy component", () => {
+    app.router.go("/users");
+    const fn = jest.fn();
+    const component = () => fn;
+    Route({ path: "/users", component }, [])();
+    expect(fn).toBeCalled();
+});
+
 test("Route returns result of component prop if it exactly matches to current location", () => {
     expect.assertions(3);
     app.router.go("/users");
