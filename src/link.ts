@@ -1,6 +1,6 @@
 import { VNode } from "hyperoop";
-import {trimTrailingSlash} from "./parseRoute";
-import {jsxFactory as h} from "./router";
+import { IToObject, locationToString, locString } from "./locutils";
+import { jsxFactory as h } from "./router";
 
 interface ILocated {
     protocol: string;
@@ -13,31 +13,15 @@ const origin = (loc: ILocated) =>
 
 const isExternal = (el: ILocated): boolean => el && origin(window.location) !== origin(el);
 
-export interface IToObject {
-    pathname?: string;
-    search?:   string;
-    hash?:     string;
-    state:     any;
-}
-
 export interface ILinkAttributes {
     to:       string | IToObject;
     onclick?: (e: MouseEvent) => void;
 }
 
-const parseLocation = (to: string | IToObject): [string, any] => {
-    if (!to) { return ["#", null]; }
-    if (typeof to === "string") { return [to, null]; }
-    return ["" +
-        (to.pathname ? trimTrailingSlash(to.pathname) : "") +
-        (to.search  ? (to.search[0] === "?" ? to.search : "?" + to.search) : "") +
-        (to.hash ? (to.hash[0] === "#" ? to.hash : "#" + to.hash) : ""), to.state];
-};
-
 export let Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
     h("a", {
         ...a,
-        href: parseLocation(a.to)[0],
+        href: locString(a.to)[0],
         onclick(e: MouseEvent) {
             const loc = window.location;
 
@@ -49,8 +33,8 @@ export let Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
 
             if (a.to) {
                 e.preventDefault();
-                const [to, state] = parseLocation(a.to);
-                if (to !== null && to !== loc.pathname) {
+                const [to, state] = locString(a.to);
+                if (to !== null && to !== locationToString(window.location)) {
                     history.pushState(state, "", to);
                 }
             }

@@ -1,4 +1,6 @@
 import { IRenderer, JSXFactory } from "hyperoop";
+import { locationToString, locString } from "./locutils";
+import { IToObject } from "./locutils";
 
 export interface IRendererOwner {
     readonly onLocationChange?: (data: any) => void;
@@ -7,23 +9,24 @@ export interface IRendererOwner {
 
 export let jsxFactory: JSXFactory = null;
 
-const locString = (loc: Location): string => loc.pathname + loc.search + loc.hash;
-
 export class Router {
     private rOwner: IRendererOwner;
     private loc:    string;
 
     constructor(rOwner: IRendererOwner, jsxf: JSXFactory) {
         this.rOwner = rOwner;
-        this.loc = locString(window.location);
+        this.loc = locationToString(window.location);
         if (!jsxFactory) {
             jsxFactory = jsxf;
         }
         this.subscribe();
     }
 
-    public go(pathname: string) {
-        history.pushState(null, "", pathname);
+    public go(t: string | IToObject) {
+        const [to, state] = locString(t);
+        if (to !== null && to !== locationToString(window.location)) {
+            history.pushState(state, "", to);
+        }
     }
 
     public stop() { /**/ }
@@ -50,7 +53,7 @@ export class Router {
 
         const handleLocationChange = (e) => {
             const state = "state" in e ? e.state : e.detail;
-            const loc = locString(window.location);
+            const loc = locationToString(window.location);
             if (self.loc !== loc) {
                 if (self.rOwner.onLocationChange) {
                     self.rOwner.onLocationChange(state);

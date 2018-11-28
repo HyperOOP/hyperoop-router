@@ -1,4 +1,5 @@
-export { IToObject, ILinkAttributes, Link } from "./link";
+export { IToObject } from "./locutils";
+export { ILinkAttributes, Link } from "./link";
 export { IRedirectAttributes, Redirect } from "./redirect";
 export { IRouteAttributes, ITargetAttributes, Route, TargetComponent, TargetNode} from "./route";
 export { IRendererOwner, Router} from "./router";
