@@ -1,5 +1,3 @@
-<p align="center"><img width=50 src="https://github.com/algebraic-brain/hyperoop/blob/master/logo.png?raw=true"/></p>
-
 <p align="center">
 <a href="https://travis-ci.org/algebraic-brain/hyperoop-router"><img src="https://travis-ci.org/algebraic-brain/hyperoop-router.svg?branch=master" alt="Build Status"></a>
 <a href='https://coveralls.io/github/algebraic-brain/hyperoop-router?branch=master'><img src='https://coveralls.io/repos/github/algebraic-brain/hyperoop-router/badge.svg?branch=master' alt='Coverage Status' /></a>
@@ -13,7 +11,10 @@
 <p align="center"><a href="https://www.patreon.com/algebrain"><img src="https://img.shields.io/badge/patreon-donate-orange.svg" alt="Patreon"/></a></p>
 <p align="center"><a href="https://liberapay.com/algebrain/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></p>
 
+#
+<p align="center"><img width=50 src="https://github.com/algebraic-brain/hyperoop/blob/master/logo.png?raw=true"/>
 <h1 align="center">hyperoop-router</h1>
+</p>
 
 Router for [hyperoop](https://www.npmjs.com/package/hyperoop).
 
