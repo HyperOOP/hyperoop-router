@@ -23,7 +23,7 @@ export interface IRouteAttributes {
 }
 
 /** `Route` component renders some UI when a location matches the path */
-export let Route = (a: IRouteAttributes): TargetNode => () => {
+export const Route = (a: IRouteAttributes): TargetNode => () => {
     const loc = window.location;
     const match = parseRoute(a.path, loc.pathname, a.exact);
     if (!match) { return null; }

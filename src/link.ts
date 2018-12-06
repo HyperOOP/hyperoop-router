@@ -22,7 +22,7 @@ export interface ILinkAttributes {
 }
 
 /** `Link` component that provides application navigation */
-export let Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
+export const Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
     h("a", {
         ...a,
         href: locString(a.to)[0],
