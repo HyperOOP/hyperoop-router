@@ -1,7 +1,12 @@
+/** Contains information about how a path matched the URL */
 export interface IMatch {
+    /** `true` if the entire path was matched, wtithout trailing characters */
     isExact: boolean;
+    /** The path pattern used to match, useful for building nested routes */
     path:    string;
+    /** The matched portion of the URL, useful for building nested links */
     url:     string;
+    /** Key/value pairs parsed from the URL */
     params?:  {
         [K in string]: string
     };

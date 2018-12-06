@@ -13,11 +13,15 @@ const origin = (loc: ILocated) =>
 
 const isExternal = (el: ILocated): boolean => el && origin(window.location) !== origin(el);
 
+/** Attributes for component `Link` */
 export interface ILinkAttributes {
+    /** Where to go? Can be a `string` URL or `IToObject` */
     to:       string | IToObject;
+    /** Additional event handler for clicking mouse. */
     onclick?: (e: MouseEvent) => void;
 }
 
+/** `Link` component that provides application navigation */
 export let Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
     h("a", {
         ...a,

@@ -1,9 +1,14 @@
-import {trimTrailingSlash} from "./parseRoute";
+import { trimTrailingSlash } from "./parseRoute";
 
+/** Possible attribute for `Link` navigation */
 export interface IToObject {
+    /**  The path to link to, for example `path/to/store` */
     pathname?: string;
+    /** Query parameters, for example `?model=new&price=low` */
     search?:   string;
+    /** A hash to put in the URL, for example `#product-description` */
     hash?:     string;
+    /** Application state corresponding to this new location */
     state:     any;
 }
 
