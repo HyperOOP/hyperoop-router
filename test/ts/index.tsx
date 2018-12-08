@@ -9,7 +9,6 @@ import {
     ITargetAttributes,
     Route,
     TargetComponent,
-    TargetNode,
     IRendererOwner,
     Router,
     Switch } from "router";
@@ -32,7 +31,7 @@ export const match2: IMatch = { isExact: true, path: "a/b", url: "a/b", params: 
 export const tattr: ITargetAttributes = { match: match2 };
 export const tcomp: TargetComponent = (a: ITargetAttributes) => (<div/>);
 export const roattr1: IRouteAttributes = { path: "a/b", exact: true, component: tcomp};
-export const tnode: TargetNode = Route(roattr1);
+export const tnode: ui.LazyVNode = Route(roattr1, []);
 class Actions extends ui.Actions<{}> { onLocationChange(data: any){} }
 export const rown1: IRendererOwner = new ui.Actions<{}>({}, 10);
 export const rown2: IRendererOwner = new Actions({}, 10);

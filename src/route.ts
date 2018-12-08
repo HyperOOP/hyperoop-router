@@ -1,4 +1,4 @@
-import { Component, LazyVNode } from "hyperoop";
+import { Component, LazyComponent } from "hyperoop";
 import { IMatch, parseRoute } from "./parseRoute";
 
 /** Attributes of target component of `Route` */
@@ -9,8 +9,6 @@ export interface ITargetAttributes {
 
 /** Type of `Route` target component */
 export type TargetComponent = Component<ITargetAttributes>;
-/** Type of lazy node that `Route` will render if path correspond to `location.pathname` */
-export type TargetNode = LazyVNode<ITargetAttributes>;
 
 /** Attributes for the `Route` component */
 export interface IRouteAttributes {
@@ -23,7 +21,7 @@ export interface IRouteAttributes {
 }
 
 /** `Route` component renders some UI when a location matches the path */
-export const Route = (a: IRouteAttributes): TargetNode => () => {
+export const Route: LazyComponent<IRouteAttributes> = (a: IRouteAttributes) => () => {
     const loc = window.location;
     const match = parseRoute(a.path, loc.pathname, a.exact);
     if (!match) { return null; }
