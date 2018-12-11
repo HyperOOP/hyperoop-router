@@ -67,7 +67,7 @@ export class Router {
                 if (self.rOwner.onLocationChange) {
                     self.rOwner.onLocationChange(state);
                 } else {
-                    self.rOwner.Renderer.render();
+                    self.rOwner.Renderer.scheduleRender();
                 }
                 self.loc = loc;
             }

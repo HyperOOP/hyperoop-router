@@ -1,6 +1,6 @@
 {
   "name": "hyperoop-router",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Router for hyperoop",
   "repository": {
     "type": "git",
@@ -50,6 +50,6 @@
     "typescript": "^3.0.1"
   },
   "dependencies": {
-    "hyperoop": "^0.2.8"
+    "hyperoop": "^0.3.2"
   }
 }
