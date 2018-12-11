@@ -21,7 +21,7 @@ export const toobj3: IToObject = { pathname: "A/B", state: 1 };
 export const toobj4: IToObject = { search: "?A=B", state: 1 };
 export const lattr1: ILinkAttributes = { to: "/x/y" };
 export const lattr2: ILinkAttributes = { to: toobj3 };
-export const lattr3: ILinkAttributes = { to: toobj3, onclick: ()=>{} };
+export const lattr3: ILinkAttributes = { to: toobj3, onclick: () => {} };
 export const link: ui.VNode<ILinkAttributes> = Link(lattr3, []);
 export const rattr1: IRedirectAttributes = { to: "/a/b"};
 export const rattr2: IRedirectAttributes = { from: "x", to: "/a/b"};

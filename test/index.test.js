@@ -12,27 +12,27 @@ class App extends ui.Actions {
 
     onLocationChange(data) {
         this.pathData = data;
-        this.Renderer.render();
+        this.Renderer.scheduleRender();
     }
 }
 
 let app = null;
 let pathname = "";
 
-beforeEach(() => {
+before = () => {
     document.body.innerHTML = "";
     app = new App();
     pathname = window.location.pathname;
-});
+};
 
-afterEach(() => {
+after = () => {
     app.router.go(pathname);
     app.router.stop();
     app = null;
-});
+};
 
 test("Transition by location.go()", async done => {
-
+    before();
     const spy = jest.fn();
     const view = () => ui.h(Route, { path: "/test", component: spy });
     ui.init(document.body, view, app);
@@ -43,10 +43,12 @@ test("Transition by location.go()", async done => {
     await wait(0);
     expect(spy).toBeCalled();
 
+    after();
     done();
 })
 
-test("Transition by clicking Link", async done => {
+test("Transition by clicking Link simply", async done => {
+    before();
 
     const spy = jest.fn()
     const view = () =>
@@ -69,10 +71,12 @@ test("Transition by clicking Link", async done => {
     await wait(0);
     expect(spy).toHaveBeenCalledTimes(count);
 
+    after();
     done();
 })
 
 test("Set state by clicking Link", async done => {
+    before();
 
     const view = () =>
         ui.h("div", {},
@@ -89,10 +93,13 @@ test("Set state by clicking Link", async done => {
     expect(window.location.pathname).toEqual("/test")
     expect(app.pathData).toBe("OK");
 
+    after();
     done();
 })
 
 test("Click external Link", async done => {
+    before();
+
     const view = () => ui.h(Link, { to: "http://example.com/" });
 
     ui.init(document.body, view, app);
@@ -103,10 +110,12 @@ test("Click external Link", async done => {
     await wait(0)
     expect(window.location.pathname).toEqual("/")
 
+    after();
     done();
 })
 
 test("Transition by clicking Link including non alphanumeric characters", async done => {
+    before();
 
     const spy = jest.fn()
     const view = () =>
@@ -126,10 +135,12 @@ test("Transition by clicking Link including non alphanumeric characters", async 
     expect(spy.mock.calls[0][0].match.params).toEqual({ id: "café" });
     expect(window.location.pathname).toEqual("/test/caf%C3%A9");
 
+    after();
     done();
 })
 
 test("Transition by rendering Redirect", async done => {
+    before();
 
     const spy = jest.fn();
     const view = () =>
@@ -150,5 +161,6 @@ test("Transition by rendering Redirect", async done => {
     await wait(0);
     expect(spy).toBeCalled();
 
+    after();
     done();
 })

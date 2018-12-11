@@ -1,6 +1,6 @@
 {
   "name": "hyperoop-router",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Router for hyperoop",
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "build:min": "rollup -c rollup.config.minify.js -i src/index.ts -o dist/hyperoop-router.min.js -m -f umd -n router",
     "build": "npm run clean:dist && npm run build:es && npm run build:umd && npm run build:min",
     "test": "tsc -p tsconfig.test.json && jest --coverage --env=jsdom && npm run test:ts",
+    "test:one": "tsc -p tsconfig.test.json && jest --env=jsdom -t ",
     "test:ts": "tsc -p test/ts",
     "clean:dist": "rimraf ./dist",
     "clean:all": "rimraf ./dist ./node_modules ./coverage ./rpt2_cache"
@@ -50,6 +51,6 @@
     "typescript": "^3.0.1"
   },
   "dependencies": {
-    "hyperoop": "^0.3.2"
+    "hyperoop": "^0.3.3"
   }
 }
