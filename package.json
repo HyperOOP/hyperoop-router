@@ -1,11 +1,12 @@
 {
   "name": "hyperoop-router",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Router for hyperoop",
   "repository": {
     "type": "git",
     "url": "https://github.com/algebraic-brain/hyperoop-router"
   },
+  "homepage": "https://hyperoop.github.io",
   "license": "MIT",
   "keywords": [
     "router",
