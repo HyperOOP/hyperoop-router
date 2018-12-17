@@ -1,4 +1,4 @@
-import { VNode } from "hyperoop";
+import { IVirtualNode } from "hyperoop";
 import { IToObject, locationToString, locString } from "./locutils";
 import { jsxFactory as h } from "./router";
 
@@ -22,7 +22,7 @@ export interface ILinkAttributes {
 }
 
 /** `Link` component that provides application navigation */
-export const Link = (a: ILinkAttributes, children: Array<VNode | string>) =>
+export const Link = (a: ILinkAttributes, children: Array<IVirtualNode | string>) =>
     h("a", {
         ...a,
         href: locString(a.to)[0],

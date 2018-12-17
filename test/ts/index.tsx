@@ -1,17 +1,17 @@
 import {
-    IToObject,
     ILinkAttributes,
-    Link,
-    IRedirectAttributes,
-    Redirect,
     IMatch,
+    IRedirectAttributes,
+    IRendererOwner,
     IRouteAttributes,
     ITargetAttributes,
+    IToObject,
+    Link,
+    Redirect,
     Route,
-    TargetComponent,
-    IRendererOwner,
     Router,
-    Switch } from "router";
+    Switch,
+    TargetComponent} from "router";
 
 import * as ui from "hyperoop";
 
@@ -22,7 +22,7 @@ export const toobj4: IToObject = { search: "?A=B", state: 1 };
 export const lattr1: ILinkAttributes = { to: "/x/y" };
 export const lattr2: ILinkAttributes = { to: toobj3 };
 export const lattr3: ILinkAttributes = { to: toobj3, onclick: () => {} };
-export const link: ui.VNode<ILinkAttributes> = Link(lattr3, []);
+export const link: ui.IVirtualNode<ILinkAttributes> = Link(lattr3, []);
 export const rattr1: IRedirectAttributes = { to: "/a/b"};
 export const rattr2: IRedirectAttributes = { from: "x", to: "/a/b"};
 export const redirect: string = Redirect(rattr2);
@@ -31,10 +31,10 @@ export const match2: IMatch = { isExact: true, path: "a/b", url: "a/b", params: 
 export const tattr: ITargetAttributes = { match: match2 };
 export const tcomp: TargetComponent = (a: ITargetAttributes) => (<div/>);
 export const roattr1: IRouteAttributes = { path: "a/b", exact: true, component: tcomp};
-export const tnode: ui.LazyVNode = Route(roattr1, []);
-class Actions extends ui.Actions<{}> { onLocationChange(data: any){} }
+export const tnode: ui.LazyVirtualNode = Route(roattr1, []);
+class Actions extends ui.Actions<{}> { public onLocationChange(data: any) {/**/} }
 export const rown1: IRendererOwner = new ui.Actions<{}>({}, 10);
 export const rown2: IRendererOwner = new Actions({}, 10);
 export const router1: Router = new Router(rown1, ui.h);
 export const router2: Router = new Router(rown2, ui.h);
-export const lnode1: ui.LazyVNode = Switch({}, [()=>link]);
+export const lnode1: ui.LazyVirtualNode = Switch({}, [() => link]);
