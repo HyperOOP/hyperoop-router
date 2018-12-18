@@ -26,6 +26,8 @@ Under development.
 
 See [examples](https://github.com/algebraic-brain/hyperoop-examples).
 
+More advanced example is [source code](https://github.com/algebraic-brain/hyperoop-site) of our site [hyperoop.github.io](https://hyperoop.github.io).
+
 ### Run example
 
 To run `todo-routing` example:
