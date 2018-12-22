@@ -6,7 +6,9 @@ import { IToObject } from "./locutils";
  *  possibly handle location change events.
  */
 export interface IRendererOwner {
+    /** If this function presents then it will be called instead of `Renderer.scheduleRender` */
     readonly onLocationChange?: (data: any) => void;
+    /** Using this property `Router` can schedule page redraw when needed */
     readonly Renderer?: IRenderer;
 }
 
