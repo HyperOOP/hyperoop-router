@@ -33,8 +33,8 @@ export const tcomp: TargetComponent = (a: ITargetAttributes) => (<div/>);
 export const roattr1: IRouteAttributes = { path: "a/b", exact: true, component: tcomp};
 export const tnode: ui.LazyVirtualNode = Route(roattr1, []);
 class Actions extends ui.Actions<{}> { public onLocationChange(data: any) {/**/} }
-export const rown1: IRendererOwner = new ui.Actions<{}>({}, 10);
-export const rown2: IRendererOwner = new Actions({}, 10);
+export const rown1: IRendererOwner = new ui.Actions<{}>({});
+export const rown2: IRendererOwner = new Actions({});
 export const router1: Router = new Router(rown1, ui.h);
 export const router2: Router = new Router(rown2, ui.h);
 export const lnode1: ui.LazyVirtualNode = Switch({}, [() => link]);
