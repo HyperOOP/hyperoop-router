@@ -26,30 +26,27 @@
     "src"
   ],
   "scripts": {
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "build:es": "rollup -c -i src/index.ts -o dist/router.es.js -m -f es -n router",
-    "build:umd": "rollup -c -i src/index.ts -o dist/router.umd.js -m -f umd -n router",
-    "build:min": "rollup -c rollup.config.minify.js -i src/index.ts -o dist/hyperoop-router.min.js -m -f umd -n router",
-    "build": "npm run clean:dist && npm run build:es && npm run build:umd && npm run build:min",
-    "test": "tsc -p tsconfig.test.json && jest --coverage --env=jsdom && npm run test:ts",
-    "test:one": "tsc -p tsconfig.test.json && jest --env=jsdom -t ",
-    "test:ts": "tsc -p test/ts",
-    "clean:dist": "rimraf ./dist",
-    "clean:all": "rimraf ./dist ./node_modules ./coverage ./rpt2_cache"
+    "build": "fqr build",
+    "test": "fqr test",
+    "pub": "fqr publish",
+    "clean": "fqr clean",
+    "wipe": "fqr wipe",
+    "fqr": "fqr"
   },
   "author": "Osman Bineev",
   "devDependencies": {
+    "faqtor": "^0.1.7",
+    "faqtor-of-gzip": "0.0.2",
+    "faqtor-of-publish": "0.0.3",
+    "faqtor-of-rollup": "0.0.4",
+    "faqtor-of-uglify": "0.0.2",
+    "fqr": "0.0.6",
+    "hyperoop": "^0.5.0",
     "jest": "^23.6.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.67.0",
-    "rollup-plugin-gzip": "^2.0.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-typescript2": "^0.17.2",
-    "rollup-plugin-uglify": "^6.0.0",
-    "tslint": "^5.11.0",
-    "typedoc": "^0.13.0",
-    "typedoc-plugin-markdown": "^1.1.18",
-    "typescript": "^3.0.1",
-    "hyperoop": "^0.5.0"
+    "typescript": "^3.0.1"
   }
 }
