@@ -35,18 +35,18 @@
   },
   "author": "Osman Bineev",
   "devDependencies": {
-    "faqtor": "^0.1.7",
+    "faqtor": "^0.2.1",
     "faqtor-of-gzip": "0.0.2",
     "faqtor-of-publish": "0.0.3",
     "faqtor-of-rollup": "0.0.4",
     "faqtor-of-uglify": "0.0.2",
     "fqr": "0.0.6",
-    "hyperoop": "^0.5.0",
-    "jest": "^23.6.0",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.67.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-typescript2": "^0.17.2",
-    "typescript": "^3.0.1"
+    "hyperoop": "^0.5.3",
+    "jest": "^24.5.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.6.0",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "typescript": "^3.3.3333"
   }
 }
